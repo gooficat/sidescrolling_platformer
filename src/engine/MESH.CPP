@@ -23,6 +23,7 @@ void MESH::genMesh(std::vector<Vertex>& a_positions,
                          (void*)(offsetof(Vertex, Vertex::texCoord)));
    this->vertexCount = a_positions.size();
    this->drawMode = a_drawMode;
+   glBindVertexArray(0);
 }
 
 MESH::MESH(std::string a_path)
@@ -105,4 +106,5 @@ void MESH::Draw()
 {
    glBindVertexArray(this->VAO);
    glDrawArrays(this->drawMode, 0, this->vertexCount);
+   glBindVertexArray(0);
 }

@@ -16,6 +16,8 @@ bool keys[512];
 bool leftMouseDown;
 bool rightMouseDown;
 
+uint16_t WIDTH, HEIGHT;
+
 void keyCallback(GLFWwindow*, int a_key, int, int a_action, int)
 {
    if (a_action == GLFW_PRESS)
@@ -62,13 +64,16 @@ int initWindowAndContext(uint16_t a_width, uint16_t a_height)
 {
    glfwInit();
    // glfwWindowHint(GLFW_SAMPLES, 4);
+   glfwWindowHint(GLFW_RED_BITS, 8);
+   glfwWindowHint(GLFW_GREEN_BITS, 8);
+   glfwWindowHint(GLFW_BLUE_BITS, 8);
    window = glfwCreateWindow(a_width, a_height, "Game", 0, NULL);
    if (window == nullptr)
    {
       std::cerr << "GLFW Window failed to launch!" << std::endl;
       return 0;
    }
-   glfwSwapInterval(1);
+   // glfwSwapInterval(1);
    glfwMakeContextCurrent(window);
    glfwSetKeyCallback(window, keyCallback);
    glfwSetCursorPosCallback(window, mouseCallback);
@@ -82,6 +87,8 @@ int initWindowAndContext(uint16_t a_width, uint16_t a_height)
    glViewport(0, 0, a_width, a_height);
    glClearColor(0.0f, 0.2f, 0.1f, 1.0f);
    glEnable(GL_DEPTH_TEST);
+   glEnable(GL_BLEND);
+   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
    // glEnable(GL_MULTISAMPLE);
    return 1;
 }
@@ -94,6 +101,8 @@ int Init(uint16_t a_width, uint16_t a_height)
       return 0;
    }
    stbi_set_flip_vertically_on_load(true);
+   WIDTH = a_width;
+   HEIGHT = a_height;
    return 1;
 }
 

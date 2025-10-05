@@ -23,10 +23,13 @@ cmake_minimum_required(VERSION 3.15)
             src/engine/UTIL.CPP
             src/engine/CAMERA.CPP
             src/engine/TEXTURE.CPP
+            src/engine/SPRITE.CPP
 
             src/GAME.CPP
             src/MAIN.CPP
             src/COLLISION.CPP
+            src/PRIMITIVES.CPP
+            
             src/glad.c
     )
         

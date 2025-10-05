@@ -33,3 +33,13 @@ void SHADER::SetMat4(const glm::mat4& a_matrix, const char* a_name) {
 	GLint location = glGetUniformLocation(this->ID, a_name);
 	glUniformMatrix4fv(location, 1, GL_FALSE, &a_matrix[0][0]);
 }
+
+void SHADER::SetVec2(const glm::vec2& a_vector, const char* a_name) {
+	GLint location = glGetUniformLocation(this->ID, a_name);
+	glUniform2fv(location, 1, &a_vector[0]);
+}
+
+void SHADER::SetIVec2(const glm::ivec2& a_vector, const char* a_name) {
+	GLint location = glGetUniformLocation(this->ID, a_name);
+	glUniform2iv(location, 1, &a_vector[0]);
+}

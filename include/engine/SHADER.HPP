@@ -19,6 +19,8 @@ class SHADER
    ~SHADER();
    void Use();
    void SetMat4(const glm::mat4& a_matrix, const char* a_name);
+   void SetVec2(const glm::vec2& a_vector, const char* a_name);
+   void SetIVec2(const glm::ivec2& a_vector, const char* a_name);
 };
 
 #endif

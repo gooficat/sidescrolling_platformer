@@ -13,7 +13,7 @@
 
 class MODEL : public SPATIAL
 {
- private:
+ protected:
    MESH* mesh;
  public:
    SHADER* shader;

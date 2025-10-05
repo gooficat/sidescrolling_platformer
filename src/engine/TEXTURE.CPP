@@ -18,7 +18,22 @@ TEXTURE::TEXTURE(const char* a_path)
    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
-   glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+   GLenum type;
+   switch (nrChannels) {
+      case 4:
+         type = GL_RGBA;
+         break;
+      case 3:
+         type = GL_RGB;
+         break;
+      case 1:
+         type = GL_RED;
+         break;
+      default:
+         break;
+   }
+
+   glTexImage2D(GL_TEXTURE_2D, 0, type, width, height, 0, type, GL_UNSIGNED_BYTE, data);
    glGenerateMipmap(GL_TEXTURE_2D);
 }
 TEXTURE::~TEXTURE()

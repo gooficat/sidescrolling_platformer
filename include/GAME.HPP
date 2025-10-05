@@ -21,6 +21,8 @@ extern bool running;
 extern std::vector<SCENE*> scenes;
 extern uint16_t currentScene;
 
+extern uint16_t WIDTH, HEIGHT;
+
 extern GLFWwindow* window;
 
 extern bool keys[512];
